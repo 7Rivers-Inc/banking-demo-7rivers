@@ -51,7 +51,7 @@ GRANT USAGE ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO ROLE BANKING_DEMO_7RIVERS
 GRANT CREATE AGENT ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO ROLE BANKING_DEMO_7RIVERS_ROLE;
 
 -- Create email notification integration for agent alerts and notifications
-CREATE NOTIFICATION INTEGRATION BANKING_DEMO_7RIVERS_EMAIL_INTEGRATION
+CREATE NOTIFICATION INTEGRATION IF NOT EXISTS BANKING_DEMO_7RIVERS_EMAIL_INTEGRATION
   TYPE=EMAIL
   ENABLED=TRUE
   DEFAULT_SUBJECT = 'Snowflake Intelligence';
@@ -73,9 +73,6 @@ with
 	warehouse_type='STANDARD'
 	resource_constraint='STANDARD_GEN_2'
 	warehouse_size='Small'
-	max_cluster_count=1
-	min_cluster_count=1
-	scaling_policy=STANDARD
 	auto_suspend=60
 	auto_resume=TRUE
 ;
@@ -119,6 +116,57 @@ create or replace TABLE STG_CHUNK_MARKETING_DOCUMENTS (
 -- DIMENSION TABLES
 -- =====================================================
 
+create or replace TABLE DIM_GEOGRAPHY (
+	GEOGRAPHY_KEY NUMBER(38,0),
+	CITY_NAME VARCHAR(16777216) NOT NULL,
+	STATE_CODE VARCHAR(16777216),
+	STATE_NAME VARCHAR(16777216),
+	REGION_NAME VARCHAR(16777216),
+	COUNTRY_CODE VARCHAR(16777216) DEFAULT 'US',
+	COUNTRY_NAME VARCHAR(16777216) DEFAULT 'United States',
+	CREATED_TIMESTAMP TIMESTAMP_NTZ(9) DEFAULT CURRENT_TIMESTAMP(),
+	primary key (GEOGRAPHY_KEY)
+)COMMENT='The table contains records of geographic locations, specifically cities and regions. Each record includes details about the location''s name, administrative divisions, and country information.'
+;
+
+create or replace TABLE DIM_BRANCH (
+	BRANCH_KEY NUMBER(38,0),
+	BRANCH_ID VARCHAR(16777216) NOT NULL,
+	BRANCH_NAME VARCHAR(16777216),
+	GEOGRAPHY_KEY NUMBER(38,0),
+	BRANCH_TYPE VARCHAR(16777216),
+	CREATED_TIMESTAMP TIMESTAMP_NTZ(9) DEFAULT CURRENT_TIMESTAMP(),
+    BRANCH_CITY VARCHAR(16777216),
+	unique (BRANCH_ID),
+	primary key (BRANCH_KEY),
+	foreign key (GEOGRAPHY_KEY) references DIM_GEOGRAPHY(GEOGRAPHY_KEY)
+)COMMENT='The table contains records of branch locations. Each record includes details about the branch''s geography, type, and creation timestamp.'
+;
+
+create or replace TABLE DIM_PRIVATE_BANKER (
+	PRIVATE_BANKER_KEY NUMBER(38,0),
+	BANKER_ID VARCHAR(16777216) NOT NULL,
+	FIRST_NAME VARCHAR(16777216),
+	LAST_NAME VARCHAR(16777216),
+	FULL_NAME VARCHAR(16777216) NOT NULL,
+	BRANCH_KEY NUMBER(38,0),
+	TITLE VARCHAR(16777216),
+	SPECIALIZATION VARCHAR(16777216),
+	HIRE_DATE DATE,
+	PHONE VARCHAR(16777216),
+	EMAIL VARCHAR(16777216),
+	LICENSE_SERIES VARCHAR(16777216),
+	YEARS_EXPERIENCE NUMBER(38,0),
+	EFFECTIVE_DATE DATE DEFAULT CURRENT_DATE(),
+	EXPIRY_DATE DATE DEFAULT CAST('9999-12-31' AS DATE),
+	IS_CURRENT BOOLEAN DEFAULT TRUE,
+	CREATED_TIMESTAMP TIMESTAMP_NTZ(9) DEFAULT CURRENT_TIMESTAMP(),
+	UPDATED_TIMESTAMP TIMESTAMP_NTZ(9) DEFAULT CURRENT_TIMESTAMP(),
+	primary key (PRIVATE_BANKER_KEY),
+	foreign key (BRANCH_KEY) references DIM_BRANCH(BRANCH_KEY)
+)COMMENT='The table contains records of banking professionals, specifically private bankers. Each record represents a single banker and includes details about their employment status, contact information, and professional background.'
+;
+
 create or replace TABLE DIM_ACCOUNT (
 	ACCOUNT_KEY NUMBER(38,0) NOT NULL autoincrement start 1 increment 1 noorder,
 	CUSTOMER_ID VARCHAR(16777216) NOT NULL,
@@ -133,19 +181,6 @@ create or replace TABLE DIM_ACCOUNT (
 	CUSTOMER_KEY NUMBER(38,0),
 	primary key (ACCOUNT_KEY)
 )COMMENT='The table contains records of customer accounts. Each record represents a single account and includes details about the account type, customer information, and account status.'
-;
-create or replace TABLE DIM_BRANCH (
-	BRANCH_KEY NUMBER(38,0),
-	BRANCH_ID VARCHAR(16777216) NOT NULL,
-	BRANCH_NAME VARCHAR(16777216),
-	GEOGRAPHY_KEY NUMBER(38,0),
-	BRANCH_TYPE VARCHAR(16777216),
-	CREATED_TIMESTAMP TIMESTAMP_NTZ(9) DEFAULT CURRENT_TIMESTAMP(),
-    BRANCH_CITY VARCHAR(16777216),
-	unique (BRANCH_ID),
-	primary key (BRANCH_KEY),
-	foreign key (GEOGRAPHY_KEY) references DIM_GEOGRAPHY(GEOGRAPHY_KEY)
-)COMMENT='The table contains records of branch locations. Each record includes details about the branch''s geography, type, and creation timestamp.'
 ;
 create or replace TABLE DIM_CSR (
 	CSR_KEY NUMBER(38,0),
@@ -200,41 +235,6 @@ create or replace TABLE DIM_DATE (
 	FISCAL_YEAR NUMBER(38,0),
 	FISCAL_QUARTER NUMBER(38,0)
 )COMMENT='The table contains records of dates, categorized by their attributes such as year, quarter, month, and day. Each record represents a single date and includes details about its position within a calendar, including day of the week and fiscal year information.'
-;
-create or replace TABLE DIM_GEOGRAPHY (
-	GEOGRAPHY_KEY NUMBER(38,0),
-	CITY_NAME VARCHAR(16777216) NOT NULL,
-	STATE_CODE VARCHAR(16777216),
-	STATE_NAME VARCHAR(16777216),
-	REGION_NAME VARCHAR(16777216),
-	COUNTRY_CODE VARCHAR(16777216) DEFAULT 'US',
-	COUNTRY_NAME VARCHAR(16777216) DEFAULT 'United States',
-	CREATED_TIMESTAMP TIMESTAMP_NTZ(9) DEFAULT CURRENT_TIMESTAMP(),
-	primary key (GEOGRAPHY_KEY)
-)COMMENT='The table contains records of geographic locations, specifically cities and regions. Each record includes details about the location''s name, administrative divisions, and country information.'
-;
-create or replace TABLE DIM_PRIVATE_BANKER (
-	PRIVATE_BANKER_KEY NUMBER(38,0),
-	BANKER_ID VARCHAR(16777216) NOT NULL,
-	FIRST_NAME VARCHAR(16777216),
-	LAST_NAME VARCHAR(16777216),
-	FULL_NAME VARCHAR(16777216) NOT NULL,
-	BRANCH_KEY NUMBER(38,0),
-	TITLE VARCHAR(16777216),
-	SPECIALIZATION VARCHAR(16777216),
-	HIRE_DATE DATE,
-	PHONE VARCHAR(16777216),
-	EMAIL VARCHAR(16777216),
-	LICENSE_SERIES VARCHAR(16777216),
-	YEARS_EXPERIENCE NUMBER(38,0),
-	EFFECTIVE_DATE DATE DEFAULT CURRENT_DATE(),
-	EXPIRY_DATE DATE DEFAULT CAST('9999-12-31' AS DATE),
-	IS_CURRENT BOOLEAN DEFAULT TRUE,
-	CREATED_TIMESTAMP TIMESTAMP_NTZ(9) DEFAULT CURRENT_TIMESTAMP(),
-	UPDATED_TIMESTAMP TIMESTAMP_NTZ(9) DEFAULT CURRENT_TIMESTAMP(),
-	primary key (PRIVATE_BANKER_KEY),
-	foreign key (BRANCH_KEY) references DIM_BRANCH(BRANCH_KEY)
-)COMMENT='The table contains records of banking professionals, specifically private bankers. Each record represents a single banker and includes details about their employment status, contact information, and professional background.'
 ;
 create or replace TABLE DIM_PRODUCT (
 	PRODUCT_KEY NUMBER(38,0),
