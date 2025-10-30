@@ -1,0 +1,108 @@
+7RIVERS BANKING DEMO LICENSE
+Copyright © 2025-Present 7Rivers, Inc.
+All Rights Reserved
+
+================================================================================
+
+PROPRIETARY SOFTWARE LICENSE FOR DEMONSTRATION PURPOSES
+
+This 7Rivers Banking Demo (the "Software") is proprietary to 7Rivers, Inc.
+("7Rivers") and is protected by copyright law and international treaties.
+
+================================================================================
+
+1. GRANT OF LICENSE
+
+Authorized 7Rivers consulting partners, clients, and team members ("Authorized
+Users") are granted a limited, non-exclusive, non-transferable license to:
+
+   a) Use this Software for client presentations, demonstrations, and
+      proof-of-concepts
+
+   b) Deploy the Software in non-production Snowflake environments for
+      demonstration and evaluation purposes
+
+   c) Reference the architecture, design patterns, and methodologies in
+      proposals and documentation
+
+   d) Modify the Software for demonstration purposes while maintaining
+      attribution to 7Rivers
+
+2. RESTRICTIONS
+
+Authorized Users may NOT:
+
+   a) Redistribute, sublicense, or share this Software with unauthorized
+      third parties without prior written permission from 7Rivers
+
+   b) Use this Software in production environments or for commercial purposes
+      beyond demonstration and evaluation
+
+   c) Remove, alter, or obscure any copyright notices, trademarks, or
+      attribution to 7Rivers
+
+   d) Create derivative works for resale or commercial distribution
+
+   e) Claim ownership or misrepresent the origin of the Software
+
+   f) Use the Software in any manner that competes with 7Rivers' business
+      interests
+
+3. DISCLAIMER - FICTIONAL DEMONSTRATION DATA
+
+THIS SOFTWARE REPRESENTS A FICTIONAL BANKING INSTITUTION (7RIVERS NATIONAL BANK)
+WITH SYNTHETICALLY GENERATED DATA. All customer names, account numbers,
+transactions, and business data are entirely fictional and created solely for
+demonstration purposes. This Software is NOT intended for use with real customer
+data or in production banking environments.
+
+4. WARRANTY DISCLAIMER
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL 7RIVERS BE
+LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+5. LIMITATION OF LIABILITY
+
+IN NO EVENT SHALL 7RIVERS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+6. TERMINATION
+
+This license is effective until terminated. Your rights under this license
+will terminate automatically without notice if you fail to comply with any
+of its terms. Upon termination, you must cease all use of the Software and
+destroy all copies in your possession.
+
+7. GOVERNING LAW
+
+This license shall be governed by and construed in accordance with the laws
+of the United States, without regard to its conflict of law provisions.
+
+8. TRADEMARK NOTICE
+
+"7Rivers" and related marks are trademarks of 7Rivers, Inc. "Snowflake,"
+"Snowflake Intelligence," and "Cortex AI" are trademarks of Snowflake Inc.
+
+================================================================================
+
+FOR LICENSING INQUIRIES, PERMISSION REQUESTS, OR QUESTIONS:
+
+7Rivers, Inc.
+Website: https://www.7riversinc.com
+Email: info@7riversinc.com
+
+To become an authorized user or request permission for uses not covered by
+this license, please contact the 7Rivers team.
+
+================================================================================
+
+Last Updated: January 2025
