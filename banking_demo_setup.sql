@@ -14,7 +14,9 @@
 -- - Run this script as ACCOUNTADMIN role
 -- - Ensure access to Azure external stage for data loading
 -- - Snowflake Intelligence features must be enabled on your account
---
+-- 
+-- Copyright © 2025-Present 7Rivers, Inc.
+-- All Rights Reserved
 -- =====================================================
 
 -- =====================================================
