@@ -202,12 +202,12 @@ Intelligence Agent
 
 ### Data Volume
 Sample data includes:
-- ~3,000 customers
-- ~600 branches across US regions
-- ~500,000 transactions
+- ~5,000 customers
+- ~100 branches across US regions
+- ~15,000 transactions
 - ~3,000 credit card accounts
-- ~160,000 loan records
-- ~1,500 customer service interactions
+- ~2,500 loan records
+- ~500 customer service interactions
 
 ## Use Cases for Consulting Partners
 
@@ -220,13 +220,6 @@ This demo is ideal for showcasing:
 - **Advanced SQL** - Window functions, CTEs, complex joins
 
 ## Support & Customization
-
-### Extending the Demo
-- Add new tables or views to the semantic model
-- Create additional Cortex Search services
-- Extend the agent with custom tools
-- Modify agent instructions for specific use cases
-- Add data quality rules and monitoring
 
 ### Best Practices
 - Use the provided role (`BANKING_DEMO_7RIVERS_ROLE`) for access control
