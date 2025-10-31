@@ -6,8 +6,34 @@ This repository contains a comprehensive banking demonstration environment showc
 
 ## What's Included
 
+### AI & Intelligence Features
+
+#### 1. Cortex Search Services
+- **Call Center Search** - Semantic search over customer service call transcripts
+- **Marketing Search** - Product information and marketing document retrieval
+
+#### 2. Semantic View (Cortex Analyst)
+A comprehensive semantic model enabling natural language querying:
+- 15+ tables with business-friendly synonyms
+- Detailed column descriptions and sample values
+- Relationship definitions for accurate joins
+- Custom instructions for SQL generation (formatting, precision)
+
+#### 3. Snowflake Intelligence Agent
+An AI-powered conversational agent that combines:
+- **Cortex Analyst** - Text-to-SQL for analytics queries
+- **Cortex Search** - Semantic search over documents and transcripts
+- **Custom Tools** - Email notifications and reporting capabilities
+
+**Agent Capabilities:**
+- Answer questions about customer behavior and trends
+- Find relevant marketing materials
+- Search call center logs for customer issues
+- Send email reports and notifications
+- Generate visualizations and charts
+
 ### Data Model
-The demo implements a dimensional data warehouse following Kimball methodology:
+The demo implements a dimensional data warehouse as the underlying data foundation:
 
 **Dimension Tables:**
 - **DIM_CUSTOMER** - Customer demographics and contact information
@@ -35,32 +61,6 @@ The demo implements a dimensional data warehouse following Kimball methodology:
 - Monthly transaction trends
 - Anomaly monitoring dashboards
 
-### AI & Intelligence Features
-
-#### 1. Cortex Search Services
-- **Call Center Search** - Semantic search over customer service call transcripts
-- **Marketing Search** - Product information and marketing document retrieval
-
-#### 2. Semantic View (Cortex Analyst)
-A comprehensive semantic model enabling natural language querying:
-- 15+ tables with business-friendly synonyms
-- Detailed column descriptions and sample values
-- Relationship definitions for accurate joins
-- Custom instructions for SQL generation (formatting, precision)
-
-#### 3. Snowflake Intelligence Agent
-An AI-powered conversational agent that combines:
-- **Cortex Analyst** - Text-to-SQL for analytics queries
-- **Cortex Search** - Semantic search over documents and transcripts
-- **Custom Tools** - Email notifications and reporting capabilities
-
-**Agent Capabilities:**
-- Answer questions about customer behavior and trends
-- Find relevant marketing materials
-- Search call center logs for customer issues
-- Send email reports and notifications
-- Generate visualizations and charts
-
 ## Getting Started
 
 ### Prerequisites
@@ -68,7 +68,8 @@ An AI-powered conversational agent that combines:
   - Snowflake Intelligence features enabled
   - Cortex AI services available
   - ACCOUNTADMIN role access
-- Access to the Azure external stage (included in script)
+- Access to the public Azure external stage (included in script)
+  - azure://public7rivers.blob.core.windows.net/banking-demo/
 
 ### Installation
 
