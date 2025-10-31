@@ -26,6 +26,9 @@
 -- Run this script as ACCOUNTADMIN
 USE ROLE ACCOUNTADMIN;
 
+-- Enable cross region inference (required to use claude-4-sonnet)
+ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'AWS_US';
+
 -- Create the role
 CREATE ROLE IF NOT EXISTS BANKING_DEMO_7RIVERS_ROLE
     COMMENT = 'Role for Banking Demo with permissions for database, schemas, warehouse, cortex agent, and semantic views';
