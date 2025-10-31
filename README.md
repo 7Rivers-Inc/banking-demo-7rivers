@@ -236,6 +236,6 @@ This is a **demonstration environment** with **fictional data** representing 7Ri
 
 ---
 
-**7Rivers, Inc.** - Snowflake Consulting Partner
-
-For questions or support, contact your 7Rivers consulting team.
+**7Rivers, Inc.**
+Copyright © 2025-Present 7Rivers, Inc.
+All Rights Reserved
