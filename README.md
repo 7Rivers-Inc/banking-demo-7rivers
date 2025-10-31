@@ -112,11 +112,15 @@ WHERE CREDIT_UTILIZATION_RATIO > 0.8;
 #### Using Cortex Search
 ```sql
 -- Search call center logs
-SELECT * FROM TABLE(
-  BANKING_DEMO_7RIVERS_CALL_CENTER_SEARCH!SEARCH(
-    'customer complaints about mobile app'
+SELECT PARSE_JSON(
+  SNOWFLAKE.CORTEX.SEARCH_PREVIEW(
+      'BANKING_DEMO_7RIVERS_CALL_CENTER_SEARCH',
+      '{
+         "query": "Account balance inquiry",
+         "limit": 5
+      }'
   )
-);
+)['results'] as results;
 ```
 
 #### Interacting with the Agent
