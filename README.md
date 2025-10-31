@@ -68,8 +68,6 @@ The demo implements a dimensional data warehouse as the underlying data foundati
   - Snowflake Intelligence features enabled
   - Cortex AI services available
   - ACCOUNTADMIN role access
-- Access to the public Azure external stage (included in script)
-  - azure://public7rivers.blob.core.windows.net/banking-demo/
 
 ### Installation
 
@@ -152,7 +150,8 @@ Intelligence Agent
 
 ### Key Components
 
-1. **External Stage** - Azure blob storage with demo data files
+1. **External Stage** - Public Azure blob storage with demo data files
+   - azure://public7rivers.blob.core.windows.net/banking-demo/
 2. **Data Warehouse** - Star schema with dimension and fact tables
 3. **Cortex Services**
    - Search: Vector embeddings for semantic search
