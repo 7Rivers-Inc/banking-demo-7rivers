@@ -4,6 +4,10 @@
 
 This repository contains a comprehensive banking demonstration environment showcasing **Snowflake Intelligence** and **Cortex AI** capabilities. The demo represents a fictional **7Rivers National Bank** with a complete data warehouse implementation, AI-powered search services, and conversational analytics through Snowflake's Intelligence Agent.
 
+[7Rivers Conversational Analytics Overview](https://public7rivers.blob.core.windows.net/banking-demo/demo_documentation/7Rivers%20Conversational%20Analytics%20for%20Banking%20Overview.pdf)
+
+[7Rivers Conversational Analytics Demo Banking Narrative](https://public7rivers.blob.core.windows.net/banking-demo/demo_documentation/7Rivers%20Conversational%20Analytics%20Demo%20for%20Banking%20Narrative.pdf)
+
 ## What's Included
 
 ### AI & Intelligence Features
