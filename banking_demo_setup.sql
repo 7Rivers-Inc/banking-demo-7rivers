@@ -1073,8 +1073,9 @@ def send_email(session, recipient_email, subject, body):
 -- AI-powered conversational agent for banking analytics
 -- The agent combines Cortex Analyst (text-to-SQL), Cortex Search, and custom tools
 -- to provide natural language interaction with the banking data
+-- Note: agent is created in SNOWFLAKE_INTELLIGENCE.AGENTS schema - this could change in a later release
 
-CREATE OR REPLACE AGENT BANKING_DEMO_7RIVERS_AGENT
+CREATE OR REPLACE AGENT SNOWFLAKE_INTELLIGENCE.AGENTS.BANKING_DEMO_7RIVERS_AGENT
   COMMENT = 'Chat with a demo banking dataset that includes records on customers, branches, transactions, account balances, credit cards, loans and call center logs.'
   PROFILE = '{"display_name":"7Rivers Banking Demo Agent"}'
   FROM SPECIFICATION
